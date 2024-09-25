@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants</title>
+</head>
+<body>
+  <h1>Restaurants</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @restaurants.each do |restaurant| %>
+        <ul>
+          <li><%= restaurant.name %></li>
+          <li><%= restaurant.address %></li>
+          <li><%= restaurant.phone_number %></li>
+          <li><%= restaurant.category %></li>
+          <p>
+            <%= link_to 'Show', restaurant, class: 'btn btn-primary' %>
+            <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-secondary' %>
+            <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </p>
+        </ul>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-success' %>
+</body>
+</html>
